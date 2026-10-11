@@ -1,6 +1,6 @@
-// Helper for GitHub Pages basePath support
+// Helper for GitHub Pages root domain (hoangthanhdat02.github.io)
 export const isProd = process.env.NODE_ENV === 'production';
-export const BASE_PATH = isProd ? '/web.birthday' : '';
+export const BASE_PATH = '';
 
 export function getAssetPath(path: string): string {
   if (!path) return '';
