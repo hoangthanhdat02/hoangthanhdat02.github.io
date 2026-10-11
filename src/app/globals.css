@@ -1,0 +1,386 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-script: var(--font-dancing), cursive;
+  --font-bubble: var(--font-fredoka), 'Arial Rounded MT Bold', system-ui, sans-serif;
+}
+
+@theme {
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-script: var(--font-script);
+}
+
+html, body {
+  background-color: #05020a;
+  color: #fff1f5;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  touch-action: manipulation;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(18, 10, 26, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 130, 180, 0.2);
+  box-shadow: 0 10px 40px -10px rgba(255, 75, 140, 0.25);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Romantic Glow Effects */
+.glow-pink-sm {
+  text-shadow: 0 0 12px rgba(255, 77, 141, 0.7);
+}
+
+.glow-pink-lg {
+  text-shadow: 0 0 20px rgba(255, 77, 141, 0.9), 0 0 40px rgba(255, 105, 180, 0.6);
+}
+
+.box-glow-pink {
+  box-shadow: 0 0 25px rgba(255, 77, 141, 0.35), inset 0 0 15px rgba(255, 105, 180, 0.2);
+}
+
+/* Keyframe animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+    filter: drop-shadow(0 0 18px rgba(255, 77, 141, 0.9));
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.4s ease-in-out infinite;
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+.animate-float-gentle {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.animate-shake {
+  animation: shake 0.45s ease-in-out;
+}
+
+/* Hide scrollbars */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  scrollbar-width: none;
+}
+
+@font-face {
+  font-family: 'Titan One Fallback';
+  src: url('/fonts/TitanOne.ttf') format('truetype');
+  font-display: swap;
+}
+
+/* Ultra-Chubby Cute Bubble Cartoon Typography Styles */
+.bubble-text-white,
+.bubble-letter-white {
+  color: #ffffff;
+  -webkit-text-stroke: clamp(4px, 0.75vw, 6px) #1e1e1e;
+  paint-order: stroke fill;
+  filter: drop-shadow(0px clamp(4px, 0.7vw, 6px) 0px #1e1e1e);
+  font-family: var(--font-titan), 'Titan One', 'Titan One Fallback', cursive, sans-serif;
+  display: inline-block;
+  transform-origin: bottom center;
+  user-select: none;
+  line-height: 1;
+}
+
+.bubble-text-pink,
+.bubble-letter-pink {
+  color: #ff6e87;
+  -webkit-text-stroke: clamp(4px, 0.75vw, 6px) #1e1e1e;
+  paint-order: stroke fill;
+  filter: drop-shadow(0px clamp(4px, 0.7vw, 6px) 0px #1e1e1e);
+  font-family: var(--font-titan), 'Titan One', 'Titan One Fallback', cursive, sans-serif;
+  display: inline-block;
+  transform-origin: bottom center;
+  user-select: none;
+  line-height: 1;
+}
+
+/* Staggered Letter Pop-in Animation */
+@keyframes popLetter {
+  0% {
+    opacity: 0;
+    transform: scale(0.1) translateY(24px) rotate(-14deg);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.18) translateY(-6px) rotate(4deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0) rotate(0deg);
+  }
+}
+
+.animate-pop-letter {
+  opacity: 0;
+  animation: popLetter 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Party Hat Drop-in Bounce */
+@keyframes partyHatDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.2) rotate(-40deg);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(4px) scale(1.15) rotate(-6deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(-12deg);
+  }
+}
+
+.animate-hat-drop {
+  opacity: 0;
+  animation: partyHatDrop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ----------------------------------------------------
+   BALLOON PULL-UP & ROMANTIC SWAY ANIMATIONS
+   ---------------------------------------------------- */
+
+/* 1. Slow Romantic Balloon Pull-Up (~4.0s duration, matching requested 3.5s - 4.5s) */
+@keyframes balloonPullUpRise {
+  0% {
+    transform: translateY(115vh) rotate(-3.5deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(28vh) rotate(1.5deg);
+  }
+  75% {
+    transform: translateY(5vh) rotate(-1deg);
+  }
+  88% {
+    /* Gentle upward buoyant cushion */
+    transform: translateY(-14px) rotate(0.8deg);
+  }
+  95% {
+    transform: translateY(3px) rotate(-0.3deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.animate-balloon-pull-up {
+  animation: balloonPullUpRise 4.0s cubic-bezier(0.18, 0.9, 0.28, 1) forwards;
+  will-change: transform, opacity;
+}
+
+/* 2. Global Buoyant Floating (gentle bobbing in the air once settled) */
+@keyframes balloonFloatIdle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-balloon-float-idle {
+  animation: balloonFloatIdle 4.6s ease-in-out infinite;
+  animation-delay: 4.0s;
+}
+
+/* 3. Left Balloon Natural Sway (Organic secondary motion) */
+@keyframes balloonLeftSway {
+  0%, 100% {
+    transform: translateY(0px) rotate(-7deg);
+  }
+  35% {
+    transform: translateY(-9px) rotate(-1.5deg);
+  }
+  70% {
+    transform: translateY(-4px) rotate(-8.5deg);
+  }
+}
+
+.animate-balloon-left-sway {
+  animation: balloonLeftSway 4.4s ease-in-out infinite;
+  transform-origin: 50% 95%;
+}
+
+/* 4. Right Balloon Natural Sway (Alternating rhythm) */
+@keyframes balloonRightSway {
+  0%, 100% {
+    transform: translateY(0px) rotate(8deg);
+  }
+  40% {
+    transform: translateY(-11px) rotate(2deg);
+  }
+  75% {
+    transform: translateY(-4px) rotate(10deg);
+  }
+}
+
+.animate-balloon-right-sway {
+  animation: balloonRightSway 5.0s ease-in-out infinite;
+  transform-origin: 50% 95%;
+}
+
+/* 5. Photo Frame Gentle Pendulum Sway */
+@keyframes framePendulumSway {
+  0%, 100% {
+    transform: rotate(-1.2deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(1.2deg) translateY(-4px);
+  }
+}
+
+.animate-frame-sway {
+  animation: framePendulumSway 5.6s ease-in-out infinite;
+  transform-origin: 50% 0%;
+}
+
+/* 6. Interactive Floating Heart Sparkle */
+@keyframes floatParticle {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(0.6) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx, 0px), -65px) scale(1.3) rotate(var(--tr, 20deg));
+  }
+}
+
+.animate-float-particle {
+  animation: floatParticle 1.4s ease-out forwards;
+}
+
+/* Legacy fallback animations */
+.animate-float-up-slow {
+  animation: balloonPullUpRise 4.0s cubic-bezier(0.18, 0.9, 0.28, 1) forwards;
+}
+
+.animate-natural-sway {
+  animation: balloonLeftSway 5.4s ease-in-out infinite;
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 16s linear infinite;
+}
+
+/* ----------------------------------------------------
+   ANIMATED STICKERS (Quby Sunflower & Dancing Bunny)
+   ---------------------------------------------------- */
+@keyframes chibiBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-9px) scale(1.06, 0.96) rotate(-3.5deg);
+  }
+  50% {
+    transform: translateY(-2px) scale(0.98, 1.02) rotate(2deg);
+  }
+  75% {
+    transform: translateY(-11px) scale(1.05, 0.97) rotate(3.5deg);
+  }
+}
+
+.animate-chibi-bounce {
+  animation: chibiBounce 2.2s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes bunnyDance {
+  0%, 100% {
+    transform: translateY(0) rotate(-8deg);
+  }
+  25% {
+    transform: translateY(-11px) rotate(8deg) scale(1.07, 0.94);
+  }
+  50% {
+    transform: translateY(-1px) rotate(-9deg) scaleX(-1);
+  }
+  75% {
+    transform: translateY(-13px) rotate(9deg) scale(1.07, 0.94);
+  }
+}
+
+.animate-bunny-dance {
+  animation: bunnyDance 1.35s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+/* Shooting Hearts Stream from Dancing Bunny */
+@keyframes shootHeart {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0) scale(0.3) rotate(0deg);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--hx, 0px) * 0.4), -25px) scale(1) rotate(var(--hr, -10deg));
+  }
+  75% {
+    opacity: 0.95;
+    transform: translate(calc(-50% + var(--hx, 0px)), -75px) scale(1.15) rotate(var(--hr, 15deg));
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--hx, 0px) * 1.3), -95px) scale(1.3) rotate(var(--hr, 25deg));
+  }
+}
+
+.animate-shoot-heart {
+  animation: shootHeart 2.2s ease-out infinite;
+  pointer-events: none;
+}
+
