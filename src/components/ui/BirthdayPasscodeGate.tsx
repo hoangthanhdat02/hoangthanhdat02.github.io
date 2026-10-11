@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Delete, Heart, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { romanticAudio } from '@/lib/audio';
+import { getAssetPath } from '@/lib/basePath';
 
 interface BirthdayPasscodeGateProps {
   onUnlock: () => void;
@@ -190,7 +191,7 @@ export function BirthdayPasscodeGate({
             <div className="relative w-full aspect-[3/4] rounded-[14px] xs:rounded-[18px] sm:rounded-[22px] overflow-hidden border-2 sm:border-[3.5px] border-white shadow-[0_6px_20px_rgba(0,0,0,0.12)] bg-[#eae3d5] group">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/passcode-photo.png"
+                src={getAssetPath('/images/passcode-photo.png')}
                 alt="Khánh Huyền"
                 className="w-full h-full object-cover object-[center_20%] scale-105 group-hover:scale-110 transition-transform duration-500"
               />

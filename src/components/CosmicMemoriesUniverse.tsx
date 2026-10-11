@@ -3,13 +3,14 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Sparkles, Heart, X, Images } from 'lucide-react';
 import { CosmicHeartUniverse3D } from './canvas/CosmicHeartUniverse3D';
+import { getAssetPath } from '@/lib/basePath';
 
 interface CosmicMemoriesUniverseProps {
   onBack: () => void;
 }
 
 // 29 Curated Photos of Khánh Huyền & The Couple (Chỉ thuần ảnh viền trắng, không chữ giới thiệu)
-const GALLERY_PHOTOS = [
+const RAW_GALLERY_PHOTOS = [
   '/images/gallery/memory-25.jpg', // Áo dài đỏ selfie gương tròn cùng bạn thân 🪞❤️
   '/images/gallery/memory-26.jpg', // Áo dài đỏ đội mũ thú hoạt hình siêu đáng yêu 🦊🧢
   '/images/gallery/memory-27.png', // Áo trắng ren & váy vàng chu mỏ tạo dáng peace sign ✌️✨
@@ -40,6 +41,8 @@ const GALLERY_PHOTOS = [
   '/images/gallery/memory-10.png', // Áo khoác trường vuốt tóc
   '/images/childhood-photo.png',   // Kỷ niệm tuổi thơ của hai đứa
 ];
+
+const GALLERY_PHOTOS = RAW_GALLERY_PHOTOS.map(getAssetPath);
 
 // Romantic glowing wishes matching user's love letter & TikTok CapCut trend
 const GLOWING_WISHES = [

@@ -3,6 +3,7 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import gsap from 'gsap';
 import { romanticAudio } from '@/lib/audio';
+import { getAssetPath } from '@/lib/basePath';
 
 interface FloatingHeart {
   id: number;
@@ -177,8 +178,8 @@ export function FloatingBalloonPhoto() {
 
               {/* Khánh Huyền Birthday Portrait Image */}
               <image
-                href="/images/birthday-avatar.png"
-                xlinkHref="/images/birthday-avatar.png"
+                href={getAssetPath('/images/birthday-avatar.png')}
+                xlinkHref={getAssetPath('/images/birthday-avatar.png')}
                 x="55"
                 y="95"
                 width="270"

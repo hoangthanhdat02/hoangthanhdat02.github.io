@@ -1,5 +1,4 @@
-// Pure Background Music Engine for Custom Audio (nhac.mp4)
-// Built-in Web Audio Pre-amp Amplifier for Volume Boosting (up to 200%+)
+import { getAssetPath } from './basePath';
 
 class RomanticAudioEngine {
   private bgAudio: HTMLAudioElement | null = null;
@@ -12,7 +11,7 @@ class RomanticAudioEngine {
   public getOrCreateBgAudio(): HTMLAudioElement | null {
     if (typeof window === 'undefined') return null;
     if (!this.bgAudio) {
-      this.bgAudio = new Audio('/images/nhac.mp4');
+      this.bgAudio = new Audio(getAssetPath('/images/nhac.mp4'));
       this.bgAudio.loop = true;
       this.bgAudio.preload = 'auto';
       this.bgAudio.volume = 1.0; // Đặt âm lượng trình duyệt lên mức tối đa (100%)
@@ -20,7 +19,7 @@ class RomanticAudioEngine {
       // Fallback sang /nhac.mp4 nếu /images/nhac.mp4 gặp sự cố
       this.bgAudio.addEventListener('error', () => {
         if (this.bgAudio && this.bgAudio.src.includes('/images/nhac.mp4')) {
-          this.bgAudio.src = '/nhac.mp4';
+          this.bgAudio.src = getAssetPath('/nhac.mp4');
           this.bgAudio.load();
           this.bgAudio.play().catch(() => {});
         }

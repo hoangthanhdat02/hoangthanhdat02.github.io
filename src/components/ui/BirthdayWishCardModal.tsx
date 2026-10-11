@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { getAssetPath } from '@/lib/basePath';
 
 interface BirthdayWishCardModalProps {
   onClose: () => void;
@@ -134,7 +135,7 @@ export function BirthdayWishCardModal({ onClose, onOpenUniverse }: BirthdayWishC
               <div className="relative w-28 xs:w-36 sm:w-48 lg:w-[215px] xl:w-[235px] h-38 xs:h-48 sm:h-64 lg:h-[295px] xl:h-[325px] rounded-[50%] overflow-hidden border-[3.5px] sm:border-[5px] border-white shadow-[0_10px_24px_rgba(0,0,0,0.2)] bg-[#eae4da] group">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/childhood-photo.png"
+                  src={getAssetPath('/images/childhood-photo.png')}
                   alt="Kỷ niệm tuổi thơ"
                   className="w-full h-full object-cover object-[center_20%] scale-110 group-hover:scale-118 transition-transform duration-700"
                 />
@@ -172,7 +173,7 @@ export function BirthdayWishCardModal({ onClose, onOpenUniverse }: BirthdayWishC
               <div className="relative group cursor-pointer">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/sticker-sunflower.png"
+                  src={getAssetPath('/images/sticker-sunflower.png')}
                   alt="Sticker Sunflower"
                   className="w-20 sm:w-22 md:w-24 h-auto drop-shadow-md animate-chibi-bounce hover:scale-115 transition-transform"
                 />
@@ -231,7 +232,7 @@ export function BirthdayWishCardModal({ onClose, onOpenUniverse }: BirthdayWishC
 
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/sticker-bunny.png"
+                  src={getAssetPath('/images/sticker-bunny.png')}
                   alt="Sticker Bunny Dancing"
                   className="w-16 sm:w-18 md:w-20 h-auto drop-shadow-md animate-bunny-dance hover:scale-115 transition-transform"
                 />
